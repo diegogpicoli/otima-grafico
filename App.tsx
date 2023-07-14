@@ -1,11 +1,11 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { StatusBar } from 'react-native';
-import Routes from './src/routes';
+import { NavigationContainer } from "@react-navigation/native";
+import { StatusBar } from "react-native";
+import Routes from "./src/routes";
 
 export default function App() {
   return (
     <NavigationContainer>
-      <StatusBar backgroundColor='#1E86E0' barStyle='light-content' />
+      <StatusBar backgroundColor="#1E86E0" barStyle="light-content" />
       <Routes />
     </NavigationContainer>
   );

@@ -1,10 +1,7 @@
-import {  Text } from 'react-native';
-
+import { Text } from "react-native";
 
 function Graphic() {
-  return (
-    <Text>Graphic</Text>
-  )
+  return <Text>Graphic</Text>;
 }
 
-export default Graphic
+export default Graphic;
