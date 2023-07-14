@@ -12,7 +12,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
 
 function Login() {
-	const [sec, setSec] = useState(true)
+  const [sec, setSec] = useState(true);
   return (
     <KeyboardAvoidingView style={style.viewStyle} behavior="padding">
       <View style={style.viewStyleLogo}>
@@ -33,22 +33,26 @@ function Login() {
           />
         </View>
         <View style={style.inputStyle}>
-          <TextInput secureTextEntry={sec} style={style.input} placeholder="Senha" />
+          <TextInput
+            secureTextEntry={sec}
+            style={style.input}
+            placeholder="Senha"
+          />
           <Ionicons
             name="lock-closed-outline"
             size={26}
             color="black"
             style={style.icon}
           />
-					<TouchableOpacity>
-						<Ionicons
-							name={sec ? "eye" : "eye-off"}
-							size={26}
-							color="black"
-							style={style.iconSecret}
-							onPress={() => setSec(!sec)}
-						/>
-        	</TouchableOpacity>
+          <TouchableOpacity>
+            <Ionicons
+              name={sec ? "eye" : "eye-off"}
+              size={26}
+              color="black"
+              style={style.iconSecret}
+              onPress={() => setSec(!sec)}
+            />
+          </TouchableOpacity>
         </View>
         <TouchableOpacity style={style.button}>
           <Text style={style.textButton}>Entrar</Text>
@@ -89,10 +93,10 @@ const style = StyleSheet.create({
   input: {
     flex: 1,
     paddingLeft: 40,
-		paddingRight: 40,
+    paddingRight: 40,
     marginTop: -1,
-		borderBottomWidth: 1,
-		borderBottomColor: '#a1a1a1',
+    borderBottomWidth: 1,
+    borderBottomColor: "#a1a1a1",
     height: 40,
     marginBottom: 12,
     fontSize: 16,
@@ -122,11 +126,11 @@ const style = StyleSheet.create({
     left: 5,
     top: 5,
   },
-	iconSecret: {
-		position: "absolute",
-		right: 10,
-		top: 5
-	}
+  iconSecret: {
+    position: "absolute",
+    right: 10,
+    top: 5,
+  },
 });
 
 export default Login;
