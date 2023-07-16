@@ -15,7 +15,7 @@ function Routes() {
       <Stack.Screen
         name="Graphic"
         component={Graphic}
-        options={{ headerShown: false }}
+        // options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );

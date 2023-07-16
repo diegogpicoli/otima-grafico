@@ -9,10 +9,41 @@ import {
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { Ionicons } from "@expo/vector-icons";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/Auth/AuthContext";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { useNavigation } from "@react-navigation/native";
+
+type RootStackParamList = {
+  Graphic: undefined;
+};
+
+type LoginScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  "Graphic"
+>;
 
 function Login() {
+  const { loginIn } = useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [sec, setSec] = useState(true);
+  const [loginFailed, setLoginFailed] = useState(false);
+  const navigator = useNavigation<LoginScreenNavigationProp>();
+
+  const handleLogin = () => {
+    if (email && password) {
+      const result = loginIn(email, password);
+      console.log(result);
+      if (result) {
+        setLoginFailed(false);
+        navigator.navigate("Graphic");
+      } else {
+        setLoginFailed(true);
+      }
+    }
+  };
+
   return (
     <KeyboardAvoidingView style={style.viewStyle} behavior="padding">
       <View style={style.viewStyleLogo}>
@@ -22,9 +53,20 @@ function Login() {
           resizeMode="contain"
         />
       </View>
+      {loginFailed && (
+        <View style={style.alertStyle}>
+          <Ionicons name="alert-circle-outline" size={24} color="red" />
+          <Text style={{ color: "red" }}>Email ou senha inválidos</Text>
+        </View>
+      )}
       <Animatable.View style={style.viewStyleForm} animation="fadeInUp">
         <View style={style.inputStyle}>
-          <TextInput style={style.input} placeholder="E-mail" />
+          <TextInput
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+            style={style.input}
+            placeholder="E-mail"
+          />
           <Ionicons
             name="mail-outline"
             size={26}
@@ -34,6 +76,8 @@ function Login() {
         </View>
         <View style={style.inputStyle}>
           <TextInput
+            value={password}
+            onChangeText={(text) => setPassword(text)}
             secureTextEntry={sec}
             style={style.input}
             placeholder="Senha"
@@ -54,7 +98,7 @@ function Login() {
             />
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={style.button}>
+        <TouchableOpacity onPress={handleLogin} style={style.button}>
           <Text style={style.textButton}>Entrar</Text>
         </TouchableOpacity>
         <TouchableOpacity>
@@ -130,6 +174,12 @@ const style = StyleSheet.create({
     position: "absolute",
     right: 10,
     top: 5,
+  },
+  alertStyle: {
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+    marginBottom: 5,
   },
 });
 
