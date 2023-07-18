@@ -15,6 +15,11 @@ A aplicação foi desenvolvida como um teste técnico para a empresa Ótima Gest
 1. Após a conclusão da instalação, execute o comando `npm start` para iniciar o expo.
 2. Baixe o aplicativo "EXPO GO" em qualquer dispositivo móvel, copie e cole a URL indicada no terminal ou escaneie o QR Code.
 
+## Usuário mockado para efetuar o Login
+
+E-mail: user1@gmail.com
+Senha: 123
+
 ## Contato
 
 Em caso de dúvidas ou sugestões, sinta-se à vontade para entrar em contato:
