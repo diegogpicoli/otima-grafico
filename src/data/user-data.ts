@@ -324,7 +324,7 @@ export const database = [
 
 export const fetchUser = (email: string, password: string) => {
   const result = users.filter(
-    (user: User) => user.email == email && user.password == password
+    (user: User) => user.email.toLowerCase() == email.toLowerCase() && user.password == password
   );
   return result;
 };
